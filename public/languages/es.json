@@ -1,0 +1,149 @@
+{
+  "title": "Mk - Portafolio",
+  "brand": "Minkaspr",
+  "nav": {
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "about": "Sobre mi",
+    "language": {
+      "spanish": "Español",
+      "english": "Inglés"
+    }
+  },
+  "hero": {
+    "greeting": "Hola, soy Dario Quispe",
+    "description": "Estudiante de <strong>Ingeniería de Software</strong> de Lima, Perú 🇵🇪. Con conocimientos en el desarrollo de software y la tecnología de la información.",
+    "contact": "Contáctame",
+    "available": "Disponible para empleo",
+    "links": {
+      "linkedin": "https://www.linkedin.com/in/dario-quispe-mk/",
+      "email": "mailto:rubendario99@gmail.com"
+    }
+  },
+  "projects": {
+    "title": "Mis Proyectos",
+    "cards": {
+      "details": "Detalles aquí"
+    },
+    "noProjects": "Proyectos no disponibles",
+    "loadMore": "Cargar Más"
+  },
+  "aboutUs": {
+    "title": "Sobre mi",
+    "sections": [
+      {
+        "title": "¿Quién Soy?",
+        "content": "Soy un entusiasta del desarrollo de software, siempre buscando crear soluciones innovadoras para situaciones prácticas. He trabajado en el desarrollo de aplicaciones web y móviles, participando en todas las fases del proyecto, desde la planificación hasta la implementación. Me interesa todo el proceso de desarrollo de software, asegurando que las aplicaciones no solo resuelvan problemas, sino que también ofrezcan una excelente experiencia al usuario."
+      },
+      {
+        "title": "¿Cómo Trabajo?",
+        "content": "Valoro el trabajo en equipo y creo que la comunicación y el compromiso son esenciales para el éxito. Me gusta colaborar con otros desarrolladores y recibir retroalimentación para mejorar continuamente. En mi tiempo libre, disfruto escuchando música y explorando nuevas tecnologías a través de videos y tutoriales."
+      },
+      {
+        "title": "Mi Nickname",
+        "content": {
+          "textPrefix": "Mi nick, ",
+          "textMiddle": ", es un acrónimo que rinde homenaje a mis queridas mascotas,",
+          "textMin": "Min",
+          "textAnd": "y",
+          "textKasper": "Kasper."
+        }
+      },
+      {
+        "title": "Habilidades Profesionales",
+        "platforms": [
+          "Desarrollo Web",
+          "Desarrollo Android"
+        ],
+        "items": [
+          {
+            "title": "Lenguajes de Programación",
+            "content": "Java, JavaScript, TypeScript"
+          },
+          {
+            "title": "Frameworks",
+            "content": "Angular (Front-end), Spring Boot (Back-end), Tailwind, Bootstrap"
+          },
+          {
+            "title": "Bases de Datos",
+            "content": "MySQL, PostgreSQL, SQLite"
+          },
+          {
+            "title": "Herramientas de Desarrollo",
+            "content": "Git, VSCode, Netbeans, IntelliJ IDEA, Android Studio, Project IDX"
+          },
+          {
+            "title": "Gestión de Proyectos",
+            "content": "Scrum, Kanban"
+          },
+          {
+            "title": "Herramientas de Gestión",
+            "content": "GitHub, Jira, Microsoft Project, Bizagi"
+          },
+          {
+            "title": "Prototipado",
+            "content": "Figma"
+          }
+        ]
+      },
+      {
+        "title": "Competencias Personales",
+        "items": [
+          {
+            "title": "Habilidades Blandas",
+            "content": [
+              "Trabajo en equipo",
+              "Comunicación efectiva",
+              "Resolución de problemas",
+              "Adaptabilidad",
+              "Gestión del tiempo",
+              "Proactividad",
+              "Aprendizaje continuo",
+              "Receptividad a la retroalimentación"
+            ]
+          },
+          {
+            "title": "Herramientas Generales",
+            "content": [
+              "Word",
+              "Excel",
+              "PowerPoint",
+              "Google Docs",
+              "Notion",
+              "Canva",
+              "Discord"
+            ]
+          },
+          {
+            "title": "Idiomas",
+            "content": [
+              "Español",
+              "Inglés"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "message": "Gracias por visitar mi portafolio. Espero que encuentres mis proyectos interesantes y útiles.",
+    "connect": {
+      "title": "Conéctate conmigo",
+      "links": [
+        {
+          "name": "LinkedIn",
+          "url": "https://www.linkedin.com/in/dario-quispe-mk"
+        },
+        {
+          "name": "GitHub",
+          "url": "https://github.com/Minkaspr"
+        },
+        {
+          "name": "Telegram",
+          "url": "https://t.me/minkaspr?start=Hola%20me%20gustaría%20contactarte"
+        }
+      ]
+    },
+    "copyright": "Copyright © 2024 | Todos los derechos reservados."
+  }
+}

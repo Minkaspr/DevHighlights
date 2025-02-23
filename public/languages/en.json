@@ -1,0 +1,149 @@
+{
+  "title": "Mk - Portfolio",
+  "brand": "Minkaspr",
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About me",
+    "language": {
+      "spanish": "Spanish",
+      "english": "English"
+    }
+  },
+  "hero": {
+    "greeting": "Hello, I'm Dario Quispe",
+    "description": "<strong>Software Engineering</strong> student from Lima, Peru 🇵🇪. With knowledge in software development and information technology.",
+    "contact": "Contact Me",
+    "available": "Available for employment",
+    "links": {
+      "linkedin": "https://www.linkedin.com/in/dario-quispe-mk/",
+      "email": "mailto:rubendario99@gmail.com"
+    }
+  },
+  "projects": {
+    "title": "My Projects",
+    "cards": {
+      "details": "Details here"
+    },
+    "noProjects": "Projects not available",
+    "loadMore": "Load More"
+  },
+  "aboutUs": {
+    "title": "About Me",
+    "sections": [
+      {
+        "title": "Who Am I?",
+        "content": "I'm a software development enthusiast, always looking to create innovative solutions for practical situations. I've worked on the development of web and mobile applications, participating in all phases of the project, from planning to implementation. I'm interested in the entire software development process, ensuring that applications not only solve problems but also provide an excellent user experience."
+      },
+      {
+        "title": "How Do I Work?",
+        "content": "I value teamwork and believe that communication and commitment are essential for success. I enjoy collaborating with other developers and receiving feedback to continuously improve. In my free time, I enjoy listening to music and exploring new technologies through videos and tutorials."
+      },
+      {
+        "title": "My Nickname",
+        "content": {
+          "textPrefix": "My nickname, ",
+          "textMiddle": ", is an acronym that pays homage to my beloved pets,",
+          "textMin": "Min",
+          "textAnd": "and",
+          "textKasper": "Kasper."
+        }
+      },
+      {
+        "title": "Professional Skills",
+        "platforms": [
+          "Web Development",
+          "Android Development"
+        ],
+        "items": [
+          {
+            "title": "Programming Languages",
+            "content": "Java, JavaScript, TypeScript"
+          },
+          {
+            "title": "Frameworks",
+            "content": "Angular (Front-end), Spring Boot (Back-end), Tailwind, Bootstrap"
+          },
+          {
+            "title": "Databases",
+            "content": "MySQL, PostgreSQL, SQLite"
+          },
+          {
+            "title": "Development Tools",
+            "content": "Git, VSCode, Netbeans, IntelliJ IDEA, Android Studio, Project IDX"
+          },
+          {
+            "title": "Project Management",
+            "content": "Scrum, Kanban"
+          },
+          {
+            "title": "Management Tools",
+            "content": "GitHub, Jira, Microsoft Project, Bizagi"
+          },
+          {
+            "title": "Prototyping",
+            "content": "Figma"
+          }
+        ]
+      },
+      {
+        "title": "Personal Competencies",
+        "items": [
+          {
+            "title": "Soft Skills",
+            "content": [
+              "Teamwork",
+              "Effective Communication",
+              "Problem Solving",
+              "Adaptability",
+              "Time Management",
+              "Proactivity",
+              "Continuous Learning",
+              "Receptiveness to Feedback"
+            ]
+          },
+          {
+            "title": "General Tools",
+            "content": [
+              "Word",
+              "Excel",
+              "PowerPoint",
+              "Google Docs",
+              "Notion",
+              "Canva",
+              "Discord"
+            ]
+          },
+          {
+            "title": "Languages",
+            "content": [
+              "Spanish",
+              "English"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "message": "Thank you for visiting my portfolio. I hope you find my projects interesting and useful.",
+    "connect": {
+      "title": "Connect with me",
+      "links": [
+        {
+          "name": "LinkedIn",
+          "url": "https://www.linkedin.com/in/dario-quispe-mk"
+        },
+        {
+          "name": "GitHub",
+          "url": "https://github.com/Minkaspr"
+        },
+        {
+          "name": "Telegram",
+          "url": "https://t.me/minkaspr?start=Hola%20me%20gustaría%20contactarte"
+        }
+      ]
+    },
+    "copyright": "Copyright © 2024 | All rights reserved."
+  }
+}
