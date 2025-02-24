@@ -3,22 +3,121 @@
 
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-poppins: 'Poppins', sans-serif;
   --font-roboto: 'Roboto', system-ui;
-
+  
   /* 🌞 Modo Claro (Por defecto) */
-  --color-primary: oklch(0.72 0.18 250);
-  --color-secondary: oklch(0.74 0.15 180);
-  --color-background: oklch(0.98 0.01 250);
-  --color-text: oklch(0.15 0.02 250);
+  --color-test: rgb(231 13 13);
+  --color-primary: #156683;
+  --color-surface-tint: #156683;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #c0e8ff;
+  --color-on-primary-container: #001f2b;
+  --color-secondary: oklch(48.03% 0.03 232.26);
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: oklch(91.26% 0.0294 233.62);
+  --color-on-secondary-container: oklch(22.2% 0.0328 227.76);
+  --color-tertiary: rgb(94 90 125);
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: rgb(228 223 255);
+  --color-on-tertiary-container: rgb(27 23 54);
+  --color-error: rgb(186 26 26);
+  --color-on-error: #ffffff;
+  --color-error-container: rgb(255 218 214);
+  --color-on-error-container: rgb(65 0 2);
+  --color-background: rgb(246 250 254);
+  --color-background-variant: #f1f7ff;
+  --color-on-background: rgb(23 28 31);
+  --color-surface: rgb(246 250 254);
+  --color-on-surface: rgb(23 28 31);
+  --color-surface-variant: rgb(220 227 233);
+  --color-on-surface-variant: rgb(64 72 76);
+  --color-outline: rgb(112 120 125);
+  --color-outline-variant: rgb(192 199 205);
+  --color-shadow: rgb(0 0 0);
+  --color-scrim: rgb(0 0 0);
+  --color-inverse-surface: rgb(44 49 52);
+  --color-inverse-on-surface: rgb(237 241 245);
+  --color-inverse-primary: rgb(140 207 241);
+  --color-primary-fixed: #c0e8ff;
+  --color-on-primary-fixed: #001f2b;
+  --color-primary-fixed-dim: rgb(140 207 241);
+  --color-on-primary-fixed-variant: rgb(0 77 102);
+  --color-secondary-fixed: oklch(91.26% 0.0294 233.62);
+  --color-on-secondary-fixed: oklch(22.2% 0.0328 227.76);
+  --color-secondary-fixed-dim: rgb(180 202 214);
+  --color-on-secondary-fixed-variant: rgb(54 73 84);
+  --color-tertiary-fixed: rgb(228 223 255);
+  --color-on-tertiary-fixed: rgb(27 23 54);
+  --color-tertiary-fixed-dim: rgb(199 194 234);
+  --color-on-tertiary-fixed-variant: rgb(70 67 100);
+  --color-surface-dim: rgb(214 218 222);
+  --color-surface-bright: rgb(246 250 254);
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: rgb(240 244 248);
+  --color-surface-container: rgb(234 238 242);
+  --color-surface-container-high: rgb(228 233 236);
+  --color-surface-container-highest: rgb(223 227 231);
 }
 
 /* 🌙 Modo Oscuro con la clase `dark` */
 .dark {
-  --color-primary: oklch(0.72 0.18 220);
-  --color-secondary: oklch(0.74 0.15 140);
-  --color-background: oklch(0.15 0.02 250);
-  --color-text: oklch(0.98 0.01 250);
+  --color-test: #610de7;
+  --color-primary: rgb(140 207 241);
+  --color-surface-tint: rgb(140 207 241);
+  --color-on-primary: rgb(0 53 71);
+  --color-primary-container: rgb(0 77 102);
+  --color-on-primary-container: #c0e8ff;
+  --color-secondary: rgb(180 202 214);
+  --color-on-secondary: rgb(31 51 61);
+  --color-secondary-container: rgb(54 73 84);
+  --color-on-secondary-container: oklch(91.26% 0.0294 233.62);
+  --color-tertiary: rgb(199 194 234);
+  --color-on-tertiary: rgb(48 45 76);
+  --color-tertiary-container: rgb(70 67 100);
+  --color-on-tertiary-container: rgb(228 223 255);
+  --color-error: rgb(255 180 171);
+  --color-on-error: rgb(105 0 5);
+  --color-error-container: rgb(147 0 10);
+  --color-on-error-container: rgb(255 218 214);
+  --color-background: rgb(15 20 23);
+  --color-background-variant: #e4f1ff;
+  --color-on-background: rgb(223 227 231);
+  --color-surface: rgb(15 20 23);
+  --color-on-surface: rgb(223 227 231);
+  --color-surface-variant: rgb(64 72 76);
+  --color-on-surface-variant: rgb(192 199 205);
+  --color-outline: rgb(138 146 151);
+  --color-outline-variant: rgb(64 72 76);
+  --color-shadow: rgb(0 0 0);
+  --color-scrim: rgb(0 0 0);
+  --color-inverse-surface: rgb(223 227 231);
+  --color-inverse-on-surface: rgb(44 49 52);
+  --color-inverse-primary: #156683;
+  --color-primary-fixed: #c0e8ff;
+  --color-on-primary-fixed: #001f2b;
+  --color-primary-fixed-dim: rgb(140 207 241);
+  --color-on-primary-fixed-variant: rgb(0 77 102);
+  --color-secondary-fixed: oklch(91.26% 0.0294 233.62);
+  --color-on-secondary-fixed: oklch(22.2% 0.0328 227.76);
+  --color-secondary-fixed-dim: rgb(180 202 214);
+  --color-on-secondary-fixed-variant: rgb(54 73 84);
+  --color-tertiary-fixed: rgb(228 223 255);
+  --color-on-tertiary-fixed: rgb(27 23 54);
+  --color-tertiary-fixed-dim: rgb(199 194 234);
+  --color-on-tertiary-fixed-variant: rgb(70 67 100);
+  --color-surface-dim: rgb(15 20 23);
+  --color-surface-bright: rgb(53 58 61);
+  --color-surface-container-lowest: rgb(10 15 18);
+  --color-surface-container-low: rgb(23 28 31);
+  --color-surface-container: rgb(27 32 35);
+  --color-surface-container-high: rgb(38 43 46);
+  --color-surface-container-highest: rgb(48 53 57);
 }
 
+body {
+  transition: background-color 0.25s ease-in-out, color 0.05s ease-in-out;
+}
