@@ -63,14 +63,14 @@
       } @loading {
       <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-32"></div>
       }
-      <button type="button" (click)="toggleTheme()">
+      <button type="button" (click)="toggleTheme()" aria-label="Cambiar tema">
         @if(darkTheme){
           <app-sun-icon className="w-6"/>
         } @else {
           <app-moon-icon className="w-6"/>
         }
       </button>
-      <button type="button" class="md:hidden" [class.hidden]="visibleMenu" (click)="toggleMenu()">
+      <button type="button" class="md:hidden" [class.hidden]="visibleMenu" (click)="toggleMenu()" aria-label="Abrir menú">
         <app-menu-icon/>
       </button>
     </div>
