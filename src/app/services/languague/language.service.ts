@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ export class LanguageService {
 
   private readonly defaultLanguage: string = 'en';
   private readonly translationsPath: string = 'languages/';
+  private readonly cacheDuration = environment.CACHE_EXPIRATION_HOURS * 60 * 60 * 1000;
   private _currentLanguage: BehaviorSubject<string>;
   private _translations: BehaviorSubject<any>;
   private _loadingState: BehaviorSubject<boolean>;
