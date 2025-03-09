@@ -1,63 +1,58 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable, signal, WritableSignal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
 
-  private darkTheme: BehaviorSubject<boolean>;
+  public isDarkTheme: WritableSignal<boolean> = signal(false);
   private lightThemeIcon: string = 'favicons/folder-outline.svg';
   private darkThemeIcon: string = 'favicons/folder-filled.svg';
 
   constructor() {
-    this.darkTheme = new BehaviorSubject<boolean>(false);
     this.initializeTheme();
+    this.listenForSystemThemeChanges();
   }
 
   private initializeTheme(): void {
     const isBrowserDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const savedTheme = localStorage.getItem('currentTheme');
 
-    if (savedTheme) {
-      this.setDarkTheme(savedTheme === 'dark');
-    } else {
-      this.setDarkTheme(isBrowserDarkMode);
-      const theme = isBrowserDarkMode ? 'dark' : 'light';
-      localStorage.setItem('currentTheme', theme);
-    }
-    this.updateFavicon();
+    const isDark = savedTheme ? savedTheme === 'dark' : isBrowserDarkMode;
+    this.isDarkTheme.set(isDark);
+    this.applyTheme();
   }
 
-  public get isDarkTheme() {
-    return this.darkTheme.asObservable();
+  public toggleTheme(): void {
+    this.isDarkTheme.set(!this.isDarkTheme());
+    localStorage.setItem('currentTheme', this.isDarkTheme() ? 'dark' : 'light');
+    this.applyTheme();
   }
 
-  // Método para establecer el tema oscuro y emitir el valor
-  public setDarkTheme(isDarkTheme: boolean): void {
-    this.darkTheme.next(isDarkTheme);
-    if (isDarkTheme) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+  private applyTheme(): void {
+    document.documentElement.classList.toggle('dark', this.isDarkTheme());
+    //this.updateFavicon();
   }
 
-  // Método para cambiar el favicon según el tema del navegador
   private updateFavicon(): void {
     const isBrowserDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const icon = isBrowserDarkMode ?  this.lightThemeIcon : this.darkThemeIcon;
     this.setFavicon(icon);
   }
 
-  // Función para cambiar el favicon
   private setFavicon(icon: string): void {
-    const link: HTMLLinkElement =
-      document.querySelector("link[rel*='icon']") ||
-      document.createElement('link');
+    let link: HTMLLinkElement = document.querySelector("link[rel*='icon']") || document.createElement('link');
     link.type = 'image/x-icon';
     link.rel = 'shortcut icon';
     link.href = icon;
-    document.getElementsByTagName('head')[0].appendChild(link);
+    document.head.appendChild(link);
+  }
+
+  private listenForSystemThemeChanges(): void {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    mediaQuery.addEventListener('change', () => {
+      this.updateFavicon();
+    });
   }
 }
