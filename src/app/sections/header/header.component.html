@@ -1,25 +1,25 @@
 <header class="sticky top-0 z-50 duration-300 bg-background shadow-md">
   <nav [class.container]="!visibleMenu" class="relative flex justify-between items-center m-auto px-4 lg:px-16">
     <div class="py-5 flex items-center gap-3 text-primary">
-      @if (darkTheme) {
+      @if (darkTheme()) {
         <app-folder-dark-icon className="h-8" id="logo-dark"/>
       } @else {
         <app-folder-light-icon className="h-8" id="logo-light"/>
       }
       <span class="select-none font-poppins font-bold text-xl">
-        {{ translations.brand }}
+        {{ translations().brand }}
       </span>
     </div>
     <div class="absolute top-0 left-0 w-full md:flex md:items-center md:static md:w-auto md:bg-transparent md:p-0"
       [class.hidden]="!visibleMenu" [class.bg-background]="visibleMenu">
-      @defer(when !isLoading){
+      @defer(when isLoading){
         <ul class="select-none flex flex-col md:flex-row justify-center items-center gap-8 h-lvh md:h-auto ">
           <li>
             <a 
               (click)="onSectionSelect('hero')" 
               class="nav-link cursor-pointer" 
               [class.active]="activeSection === 'hero'">
-              {{translations?.nav?.home}}
+              {{translations().nav.home}}
             </a>
           </li>
           <li>
@@ -27,7 +27,7 @@
               (click)="onSectionSelect('projects')" 
               class="nav-link cursor-pointer"
               [class.active]="activeSection === 'projects'">
-              {{translations?.nav?.projects}}
+              {{translations().nav.projects}}
             </a>
           </li>
           <li>
@@ -35,7 +35,7 @@
               (click)="onSectionSelect('about')" 
               class="nav-link cursor-pointer"
               [class.active]="activeSection === 'about'">
-              {{translations?.nav?.about}}
+              {{translations().nav.about}}
             </a>
           </li>
         </ul>
@@ -57,14 +57,14 @@
         </div>
     </div>
     <div class="flex flex-row items-center gap-6">
-      @defer(when !isLoading){
-      <app-dropdown [class.hidden]="visibleMenu" [options]="languageOptions" [selectedLanguage]="selectedLanguage"
+      @defer(when isLoading){
+      <app-dropdown [class.hidden]="visibleMenu" [options]="languageOptions()" [selectedLanguage]="selectedLanguage()"
         (optionSelected)="onLanguageSelected($event)" />
       } @loading {
       <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-600 w-32"></div>
       }
       <button type="button" (click)="toggleTheme()" aria-label="Cambiar tema">
-        @if(darkTheme){
+        @if(darkTheme()){
           <app-sun-icon className="w-6"/>
         } @else {
           <app-moon-icon className="w-6"/>

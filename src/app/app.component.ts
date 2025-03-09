@@ -1,8 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { LoadingPlaceholderComponent } from "./components/loading-placeholder/loading-placeholder.component";
-import { HeaderComponent } from "./components/header/header.component";
-import { LanguageService } from './services/languague/language.service';
-import { ThemeService } from './services/theme/theme.service';
+import { HeaderComponent } from "./sections/header/header.component";
 
 @Component({
   selector: 'app-root',
@@ -12,11 +10,6 @@ import { ThemeService } from './services/theme/theme.service';
 })
 export class AppComponent implements OnInit{
   activeSection: string = 'hero';
-
-  constructor(
-    private themeService: ThemeService,
-    private languageService: LanguageService
-  ) { }
 
   ngOnInit(): void {
     this.updateHash(this.activeSection);
