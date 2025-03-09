@@ -1,7 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { effect, Injectable, signal, WritableSignal } from '@angular/core';
 import { environment } from '../../../environments/environment';
+import { Translations } from '../../models/translations';
 
 @Injectable({
   providedIn: 'root'
@@ -11,81 +10,70 @@ export class LanguageService {
   private readonly defaultLanguage: string = 'en';
   private readonly translationsPath: string = 'languages/';
   private readonly cacheDuration = environment.CACHE_EXPIRATION_HOURS * 60 * 60 * 1000;
-  private _currentLanguage: BehaviorSubject<string>;
-  private _translations: BehaviorSubject<any>;
-  private _loadingState: BehaviorSubject<boolean>;
 
-  constructor(private http: HttpClient) {
-    this._currentLanguage = new BehaviorSubject<string>(this.defaultLanguage);
-    this._translations = new BehaviorSubject<any>({});
-    this._loadingState = new BehaviorSubject<boolean>(true); 
-    this.initializeLanguage();
-    this._translations.subscribe(translations => {
-      this.updateHtmlTitle(translations);
+  public currentLanguage: WritableSignal<string> = signal(this.getInitialLanguage());
+  public translations: WritableSignal<Translations> = signal({} as Translations);
+  public loadingState: WritableSignal<boolean> = signal(true);
+
+  constructor(){
+    this.loadTranslations(this.currentLanguage());
+
+    effect(() => {
+      this.updateHtmlTitle(this.translations());
     });
   }
 
-  private initializeLanguage(): void {
+  private getInitialLanguage(): string {
     const savedLanguage = localStorage.getItem('language') || this.getDeviceLanguage();
-    const initialLanguage = this.getInitialLanguage(savedLanguage);
-    this.setLanguage(initialLanguage);
-    localStorage.setItem('language', initialLanguage);
-  }
-
-  private getDeviceLanguage(): string {
-    const deviceLanguage = navigator.language || navigator.languages[0];
-    return deviceLanguage.startsWith('es') ? 'es' : 'en';
-  }
-
-  private getInitialLanguage(savedLanguage: string): string {
     return ['es', 'en'].includes(savedLanguage) ? savedLanguage : this.defaultLanguage;
   }
 
-  private setLanguage(language: string): void {
-    this._currentLanguage.next(language);
-    this.loadTranslations(language);
-    this.updateHtmlLang(language);
+  private getDeviceLanguage(): string {
+    return navigator.language.startsWith('es') ? 'es' : 'en';
   }
 
-  private loadTranslations(language: string): void {
-    this._loadingState.next(true); 
-    this.http.get(`${this.translationsPath}${language}.json`).subscribe({
-      next: (translations: any) => {
-        this._translations.next(translations);
-        this._loadingState.next(false); 
-      },
-      error: () => {
-        this._translations.next({});
-        this._loadingState.next(false);
+  private async loadTranslations(language: string): Promise<void> {
+    const cacheKey = `translations_${language}`;
+    const cacheTimestamp = localStorage.getItem(`${cacheKey}_timestamp`);
+
+    // Si hay caché válido, usarlo
+    if (cacheTimestamp && (Date.now() - Number(cacheTimestamp)) < this.cacheDuration) {
+      const cachedData = localStorage.getItem(cacheKey);
+      if (cachedData) {
+        this.translations.set(JSON.parse(cachedData));
+        this.loadingState.set(false);
+        return;
       }
-    });
-  }
+    }
 
-  private updateHtmlLang(language: string): void {
-    document.documentElement.lang = language; 
-  }
+    // Descargar solo si no hay caché o ha expirado
+    this.loadingState.set(true);
+    try {
+      const response = await fetch(`${this.translationsPath}${language}.json`);
+      const data = await response.json();
 
-  private updateHtmlTitle(translations: any): void {
-    const title = translations.title || 'Minka...';
-    document.title = title;
-  }
+      localStorage.setItem(cacheKey, JSON.stringify(data));
+      localStorage.setItem(`${cacheKey}_timestamp`, Date.now().toString());
 
-  public get translations() {
-    return this._translations.asObservable();
-  }
-
-  public get currentLanguage() {
-    return this._currentLanguage.asObservable();
-  }
-
-  public get loadingState() {
-    return this._loadingState.asObservable();
+      this.translations.set(data);
+    } catch (error) {
+      console.error(`Error cargando ${language}.json:`, error);
+      this.translations.set({} as Translations);
+    } finally {
+      this.loadingState.set(false);
+    }
   }
 
   public changeLanguage(language: string): void {
     if (['es', 'en'].includes(language)) {
       localStorage.setItem('language', language);
-      this.setLanguage(language);
+      this.currentLanguage.set(language);
+      this.loadTranslations(language);
     }
+  }
+
+  updateHtmlTitle(translations: Translations): void {
+    const title = translations?.title || 'Minka...';
+    document.title = title;
   }
 }
