@@ -1,14 +1,12 @@
 @defer{
-<app-header (sectionSelected)="scrollToSection($event)" [activeSection]="activeSection" />
-<main class="flex flex-col justify-between items-center container m-auto px-4 lg:px-16">
-  Hola
-  <div class="bg-primary-container">
-
-  </div>
-</main>
-<!--<router-outlet />-->
+  <app-header (sectionSelected)="scrollToSection($event)" [activeSection]="activeSection" />
+  <main class="flex flex-col justify-between items-center container m-auto px-4 lg:px-16">
+    <section id="hero">
+      <app-hero />
+    </section>
+  </main>
 }@placeholder {
-<app-loading-placeholder message="Preparando para cargar datos..." />
+  <app-loading-placeholder message="Preparando para cargar datos..." />
 }@loading {
-<app-loading-placeholder message="Cargando datos..." />
+  <app-loading-placeholder message="Cargando datos..." />
 }

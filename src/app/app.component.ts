@@ -1,10 +1,11 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { LoadingPlaceholderComponent } from "./components/loading-placeholder/loading-placeholder.component";
 import { HeaderComponent } from "./sections/header/header.component";
+import { HeroComponent } from "./sections/hero/hero.component";
 
 @Component({
   selector: 'app-root',
-  imports: [LoadingPlaceholderComponent, HeaderComponent],
+  imports: [LoadingPlaceholderComponent, HeaderComponent, HeroComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

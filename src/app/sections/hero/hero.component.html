@@ -1,0 +1,35 @@
+<div class="mt-1 mb-2 flex items-center justify-center gap-4 flex-col-reverse md:flex-row py-4 md:py-32">
+	<div class="max-w-xl basis-1/2">
+		<div class="flex gap-4 mb-4">
+			<img class="rounded-full shadow-lg size-16" src="imgs/minkaspr.jpeg" alt="minkaspr" draggable="false"/>
+			<a [href]="translations().hero.links.linkedin" target="_blank" rel="noopener"
+				class="flex items-center transition md:justify-center">
+				<app-badge [text]="translations().hero.available" />
+			</a>
+		</div>
+		<h1 class="text-balance text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white">
+			{{ translations().hero.greeting }}
+		</h1>
+		<p class="mt-6 text-xl text-gray-800 dark:[&>strong]:text-orange-300 [&>strong]:text-orange-500 [&>strong]:font-semibold dark:text-gray-300"
+			[innerHTML]="translations().hero.description">
+		</p>
+		<nav class="flex flex-wrap gap-4 mt-8">
+			<app-social-pill [href]="translations().hero.links.email">
+				<app-mail-icon className="size-5" />
+				{{ translations().hero.contact }}
+			</app-social-pill>
+			<app-social-pill [href]="translations().hero.links.linkedin">
+				<app-linkedin-icon className="size-5" />
+				LinkedIn
+			</app-social-pill>
+		</nav>
+	</div>
+	<div class="basis-1/2">
+		<app-person-hero-icon 
+      className="w-full h-auto" 
+      [fillPrimary]="darkTheme() ? '#8CCFF1' : '#156683'"
+			[fillOnPrimaryContainer]="darkTheme() ? '#417386' : '#023042'"
+			[fillOnSecondaryContainer]="darkTheme() ? '#274550' : '#081E27'"
+			[fillSurfaceBright]="darkTheme() ? '#D6DADE' : '#AFC9E3'" />
+	</div>
+</div>
