@@ -18,6 +18,6 @@ export class HeroComponent {
   private themeService = inject(ThemeService);
   private languageService = inject(LanguageService);
 
-  public darkTheme = this.themeService.isDarkTheme; // ✅ Signal<boolean>
+  public darkTheme = this.themeService.isDarkTheme;
   public translations = this.languageService.translations;
 }

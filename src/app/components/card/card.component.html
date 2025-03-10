@@ -1,0 +1,69 @@
+<div
+  class="group 
+    rounded-lg max-w-lg p-6 transition-all
+    flex flex-col gap-5 h-full bg-surface-container-low 
+    drop-shadow-md hover:drop-shadow-[0_3px_4px_rgba(21,102,131,0.5)] dark:hover:drop-shadow-[0_3px_4px_rgba(223,243,250,0.25)]">
+  <div class="flex flex-col justify-between h-full gap-6">
+    <div class="flex flex-col gap-6">
+      <div class="box-border rounded-lg overflow-hidden ">
+        <img class="group-hover:scale-110 transition-transform" [src]="project.imageUrl" [alt]="project.title"
+          draggable="false" />
+      </div>
+      <div class="flex flex-col gap-2">
+        <h3 class="text-lg font-semibold font-poppins">{{ project.title }}</h3>
+        <p
+          class="text-base line-clamp-4 text-pretty md:line-clamp-4 text-light-onSurfaceVariant dark:text-dark-onSurfaceVariant">
+          {{ project.description }}</p>
+      </div>
+    </div>
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-5 sm:gap-0 ">
+      <div class="inline-flex items-center gap-2">
+        @for (tech of project.technologies; track tech) {
+        <span class="inline-flex items-center justify-center size-9 rounded-full
+                    border border-light-onSurface dark:border-dark-onSurface">
+          <!-- @switch(tech) {
+            @case ('java') {
+            <app-java-icon className="size-[22px]" [fillColor]="darkTheme ? '#DCE3E9' : '#40484C'" />
+            }
+            @case ('android') {
+            <app-android-icon className="size-5" [fillColor]="darkTheme ? '#DCE3E9' : '#40484C'" />
+            }
+            @case ('sqlite') {
+            <app-sqlite-icon className="size-4" [fillColor]="darkTheme ? '#DCE3E9' : '#40484C'" />
+            }
+            @case ('tailwindcss') {
+              <app-tailwindcss-icon className="size-5" [fillColor]="darkTheme ? '#DCE3E9' : '#40484C'"/>
+            }
+            @case ('angular') {
+              <app-angular-icon className="size-5" [fillColor]="darkTheme ? '#DCE3E9' : '#40484C'"/>
+            }
+            @case ('mysql') {
+              <app-mysql-icon className="size-5" [fillColor]="darkTheme ? '#DCE3E9' : '#40484C'"/>
+            }
+            @case ('nodejs') {
+              <app-node-icon className="size-5" [fillColor]="darkTheme ? '#DCE3E9' : '#40484C'"/>
+            }
+            @case ('bootstrap') {
+              <app-bootstrap-icon className="size-6" [fillColor]="darkTheme ? '#DCE3E9' : '#40484C'"/>
+            }
+            @case ('php') {
+              <app-php-icon className="size-5" [fillColor]="darkTheme ? '#DCE3E9' : '#40484C'"/>
+            }
+            @case ('postgresql') {
+              <app-postgresql-icon className="size-5" [fillColor]="darkTheme ? '#DCE3E9' : '#40484C'"/>
+            }
+            @default {
+            <span> {{ tech }}</span>
+            }
+          } -->
+        </span>
+        }
+      </div>
+      <a [href]="project.detailsUrl" target="_blank" class="flex rounded-lg gap-1 font-medium text-secondary transition
+        hover:bg-secondary-container px-4 py-2">
+        {{ translations().projects.cards.details }}
+        <!-- <app-arrow-up-right-icon className="size-6" /> -->
+      </a>
+    </div>
+  </div>
+</div>
