@@ -1,0 +1,27 @@
+<footer class=" mt-6 pt-8 pb-4 bg-surface-container-low">
+  @let translations = this.translations();
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center container m-auto px-4">
+    <div class="max-w-md">
+      <h4 class="font-poppins font-bold text-3xl text-primary  text-center md:text-left">
+        {{ translations.brand }}
+      </h4>
+      <p class="text-balance md:text-pretty text-center md:text-left">
+        {{ translations.footer.message }}
+      </p>
+    </div>
+    <div class="max-w-md flex flex-col gap-3">
+      <span class="text-lg font-semibold text-center md:text-left">{{ translations.footer.connect.title }}</span>
+      <div class="flex gap-6">
+        @for (link of translations.footer.connect.links; track link.name) {
+        <a [href]="link.url" target="_blank"
+          class="text-on-surface-variant  hover:text-current">
+          {{ link.name }}
+        </a>
+        }
+      </div>
+    </div>
+    <div class="md:col-start-1 md:col-end-3 ">
+      <p class="text-center">{{ translations.footer.copyright }}</p>
+    </div>
+  </div>
+</footer>

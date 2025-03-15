@@ -6,10 +6,11 @@ import { ProjectsComponent } from "./sections/projects/projects.component";
 import { LanguageService } from './services/languague/language.service';
 import { ThemeService } from './services/theme/theme.service';
 import { AboutComponent } from "./sections/about/about.component";
+import { FooterComponent } from "./sections/footer/footer.component";
 
 @Component({
   selector: 'app-root',
-  imports: [LoadingPlaceholderComponent, HeaderComponent, HeroComponent, ProjectsComponent, AboutComponent],
+  imports: [LoadingPlaceholderComponent, HeaderComponent, HeroComponent, ProjectsComponent, AboutComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

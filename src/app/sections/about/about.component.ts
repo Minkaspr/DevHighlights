@@ -25,9 +25,7 @@ import { BoneIconComponent } from "../../icons/bone-icon/bone-icon.component";
   styleUrl: './about.component.css'
 })
 export class AboutComponent {
-  private themeService = inject(ThemeService);
   private languageService = inject(LanguageService);
 
-  public darkTheme = this.themeService.isDarkTheme;
   public translations = this.languageService.translations;
 }
