@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { LanguageService } from '../../services/languague/language.service';
 import { ThemeService } from '../../services/theme/theme.service';
-import { PersonHeroIconComponent } from "../../components/icons/person-hero-icon/person-hero-icon.component";
+import { PersonHeroIconComponent } from "../../icons/person-hero-icon/person-hero-icon.component";
 import { BadgeComponent } from "../../components/badge/badge.component";
 import { SocialPillComponent } from "../../components/social-pill/social-pill.component";
-import { MailIconComponent } from "../../components/icons/mail-icon/mail-icon.component";
-import { LinkedinIconComponent } from "../../components/icons/linkedin-icon/linkedin-icon.component";
+import { MailIconComponent } from "../../icons/mail-icon/mail-icon.component";
+import { LinkedinIconComponent } from "../../icons/linkedin-icon/linkedin-icon.component";
 
 @Component({
   selector: 'app-hero',
