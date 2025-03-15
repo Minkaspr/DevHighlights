@@ -12,10 +12,10 @@
     </div>
     <div class="absolute top-0 left-0 w-full md:flex md:items-center md:static md:w-auto md:bg-transparent md:p-0"
       [class.hidden]="!visibleMenu" [class.bg-background]="visibleMenu">
-      @defer(when isLoading){
+      @defer(when !isLoading()){
         <ul class="select-none flex flex-col md:flex-row justify-center items-center gap-8 h-lvh md:h-auto ">
           <li>
-            <a 
+            <a #navLink 
               (click)="onSectionSelect('hero')" 
               class="nav-link cursor-pointer" 
               [class.active]="activeSection === 'hero'">
@@ -23,7 +23,7 @@
             </a>
           </li>
           <li>
-            <a 
+            <a #navLink 
               (click)="onSectionSelect('projects')" 
               class="nav-link cursor-pointer"
               [class.active]="activeSection === 'projects'">
@@ -31,7 +31,7 @@
             </a>
           </li>
           <li>
-            <a 
+            <a #navLink 
               (click)="onSectionSelect('about')" 
               class="nav-link cursor-pointer"
               [class.active]="activeSection === 'about'">

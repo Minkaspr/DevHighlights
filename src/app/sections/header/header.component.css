@@ -1,28 +1,38 @@
 .nav-link {
   position: relative;
   font-weight: 600;
+  overflow: hidden;
 }
 
 .nav-link::before {
   content: '';
   position: absolute;
-  width: 100%;
+  width: 0;
   height: 2px;
-  background: linear-gradient(to right, var(--color-primary-container), var(--color-primary));
   bottom: -5px;
   left: 0;
-  transform: scaleX(0);
-  transition: transform 0.5s ease-in-out;
-  transform-origin: right;
+  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+.nav-link.hover-left::before {
+  left: 100%;
+  width: 0;
+  background: linear-gradient(to right, var(--color-primary-container), var(--color-primary));
+}
+
+.nav-link.hover-right::before {
+  left: 0;
+  width: 0;
+  background: linear-gradient(to left, var(--color-primary-container), var(--color-primary));
 }
 
 .nav-link:hover::before {
-  transform: scaleX(1);
-  transform-origin: left;
+  width: 100%;
+  left: 0;
 }
 
 .nav-link.active::before {
-  transform: scaleX(1);
-  transform-origin: left;
+  width: 100%;
+  left: 0;
   background: linear-gradient(to right, var(--color-primary), var(--color-primary));
 }
