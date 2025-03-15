@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { ClickOutSideDirective } from '../../directives/click-out-side/click-out-side.directive';
-import { TranslateIconComponent } from "../icons/translate-icon/translate-icon.component";
+import { TranslateIconComponent } from "../../icons/translate-icon/translate-icon.component";
 
 @Component({
   selector: 'app-dropdown',

@@ -1,8 +1,10 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, inject, OnInit } from '@angular/core';
 import { LoadingPlaceholderComponent } from "./components/loading-placeholder/loading-placeholder.component";
 import { HeaderComponent } from "./sections/header/header.component";
 import { HeroComponent } from "./sections/hero/hero.component";
 import { ProjectsComponent } from "./sections/projects/projects.component";
+import { LanguageService } from './services/languague/language.service';
+import { ThemeService } from './services/theme/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +14,10 @@ import { ProjectsComponent } from "./sections/projects/projects.component";
 })
 export class AppComponent implements OnInit{
   activeSection: string = 'hero';
+  private languageService = inject(LanguageService);
+  private themeService = inject(ThemeService);
+  public isLoadingLang = this.languageService.loadingState;
+  public isLoadingTheme = this.themeService.loadingState;
 
   ngOnInit(): void {
     this.updateHash(this.activeSection);
