@@ -5,9 +5,11 @@ import { Injectable, signal, WritableSignal } from '@angular/core';
 })
 export class ThemeService {
 
-  public isDarkTheme: WritableSignal<boolean> = signal(false);
   private lightThemeIcon: string = 'favicons/folder-outline.svg';
   private darkThemeIcon: string = 'favicons/folder-filled.svg';
+  
+  public isDarkTheme: WritableSignal<boolean> = signal(false);
+  public loadingState: WritableSignal<boolean> = signal(true);
 
   constructor() {
     this.initializeTheme();
@@ -21,6 +23,7 @@ export class ThemeService {
     const isDark = savedTheme ? savedTheme === 'dark' : isBrowserDarkMode;
     this.isDarkTheme.set(isDark);
     this.applyTheme();
+    this.loadingState.set(false);
   }
 
   public toggleTheme(): void {
