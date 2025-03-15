@@ -5,10 +5,11 @@ import { HeroComponent } from "./sections/hero/hero.component";
 import { ProjectsComponent } from "./sections/projects/projects.component";
 import { LanguageService } from './services/languague/language.service';
 import { ThemeService } from './services/theme/theme.service';
+import { AboutComponent } from "./sections/about/about.component";
 
 @Component({
   selector: 'app-root',
-  imports: [LoadingPlaceholderComponent, HeaderComponent, HeroComponent, ProjectsComponent],
+  imports: [LoadingPlaceholderComponent, HeaderComponent, HeroComponent, ProjectsComponent, AboutComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

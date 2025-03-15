@@ -14,7 +14,6 @@ import { LinkedinIconComponent } from "../../icons/linkedin-icon/linkedin-icon.c
   styleUrl: './hero.component.css'
 })
 export class HeroComponent {
-
   private themeService = inject(ThemeService);
   private languageService = inject(LanguageService);
 

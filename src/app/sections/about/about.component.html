@@ -1,0 +1,187 @@
+<section id="about" class="mt-8 mb-6 py-4">
+  @let translations = this.translations();
+  <h2 class="text-3xl font-bold text-center">{{ translations.aboutUs.title }}</h2>
+  <div class="mt-4 flex gap-12 flex-col md:flex-row">
+    <div class="flex-1 flex flex-col gap-6">
+      <div class="flex flex-col gap-2">
+        <h3 class="text-2xl font-semibold inline-flex items-center">
+          <div class="bg-surface-container-low 
+          text-primary text-xs font-medium me-2 px-1.5 py-1.5 rounded-lg">
+            <app-user-icon />
+          </div>
+          {{ translations.aboutUs.sections[0].title }}
+        </h3>
+        <p class="tracking-wide text-pretty">
+          {{ translations.aboutUs.sections[0].content }}
+        </p>
+      </div>
+      <div class="flex flex-col gap-2">
+        <h3 class="text-2xl font-semibold inline-flex items-center">
+          <div class="bg-surface-container-low  
+          text-primary text-xs font-medium me-2 px-1.5 py-1.5 rounded-lg">
+            <app-affiliate-icon />
+          </div>
+          {{ translations.aboutUs.sections[1].title }}
+        </h3>
+        <p class="tracking-wide text-pretty">
+          {{ translations.aboutUs.sections[1].content }}
+        </p>
+      </div>
+      <div class="flex flex-col gap-2">
+        <h3 class="text-2xl font-semibold inline-flex items-center">
+          <div class="bg-surface-container-low
+          text-primary text-xs font-medium me-2 px-1.5 py-1.5 rounded-lg">
+            <app-at-icon />
+          </div>
+          {{ translations.aboutUs.sections[2].title }}
+        </h3>
+        <p class="tracking-wide text-balance">
+          {{ translations.aboutUs.sections[2].content.textPrefix }} <strong>{{ translations.brand }}</strong>{{ translations.aboutUs.sections[2].content.textMiddle }}
+          <span class="inline-flex items-center align-bottom gap-2"><app-fish-icon className="w-6" /> {{ translations.aboutUs.sections[2].content.textMin }}</span> 
+          {{ translations.aboutUs.sections[2].content.textAnd }}
+          <span class="inline-flex items-center align-bottom gap-2"><app-bone-icon className="w-5" /> {{ translations.aboutUs.sections[2].content.textKasper }}</span>
+        </p>
+      </div>
+    </div>
+    <div class="flex-1">
+      <h3 class="text-2xl font-semibold">{{ translations.aboutUs.sections[3].title }}</h3>
+      <span class="bg-surface-container-low text-primary text-xs font-medium me-2 px-3 py-1 rounded-lg ">
+        {{ translations.aboutUs.sections[3].platforms?.[0] }}
+      </span>
+      <span class="bg-surface-container-low text-primary text-xs font-medium me-2 px-3 py-1 rounded-lg ">
+        {{ translations.aboutUs.sections[3].platforms?.[1] }}
+      </span>
+      <ul class="flex flex-col gap-4 mt-4">
+        <li>
+          <app-card-skill 
+            textTitle="{{ translations.aboutUs.sections[3].items?.[0]?.title }}"
+            textDescription="{{ translations.aboutUs.sections[3].items?.[0]?.content }}">
+            <app-code-icon className="w-8 h-8 text-primary"/>
+          </app-card-skill>
+        </li>
+        <li>
+          <app-card-skill 
+            textTitle="{{ translations.aboutUs.sections[3].items?.[1]?.title }}"
+            textDescription="{{ translations.aboutUs.sections[3].items?.[1]?.content }}">
+            <app-framework-icon className="w-8 h-8 text-primary"/>
+          </app-card-skill>
+        </li>
+        <li>
+          <app-card-skill 
+            textTitle="{{ translations.aboutUs.sections[3].items?.[2]?.title }}"
+            textDescription="{{ translations.aboutUs.sections[3].items?.[2]?.content }}">
+            <app-database-icon className="w-8 h-8 text-primary" />
+          </app-card-skill>
+        </li>
+        <li>
+          <app-card-skill 
+            textTitle="{{ translations.aboutUs.sections[3].items?.[3]?.title }}"
+            textDescription="{{ translations.aboutUs.sections[3].items?.[3]?.content }}">
+            <app-dev-tools-icon className="w-8 h-8 text-primary" />
+          </app-card-skill>
+        </li>
+        <li>
+          <app-card-skill 
+            textTitle="{{ translations.aboutUs.sections[3].items?.[4]?.title }}"
+            textDescription="{{ translations.aboutUs.sections[3].items?.[4]?.content }}">
+            <app-project-management-icon className="w-8 h-8 text-primary" />
+          </app-card-skill>
+        </li>
+        <li>
+          <app-card-skill 
+            textTitle="{{ translations.aboutUs.sections[3].items?.[5]?.title }}"
+            textDescription="{{ translations.aboutUs.sections[3].items?.[5]?.content }}">
+            <app-work-tools-icon className="w-8 h-8 text-primary" />
+          </app-card-skill>
+        </li>
+        <li>
+          <app-card-skill 
+            textTitle="{{ translations.aboutUs.sections[3].items?.[6]?.title }}"
+            textDescription="{{ translations.aboutUs.sections[3].items?.[6]?.content }}">
+            <app-prototyping-icon className="w-8 h-8 text-primary" />
+          </app-card-skill>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <h2 class="mt-6 text-2xl font-semibold text-center">
+    {{ translations.aboutUs.sections[4].title }}
+  </h2>
+  <div class="mt-4 grid grid-cols-6 gap-4 justify-center ">
+    <div class="col-span-6 sm:col-span-6 xl:col-span-3 block p-6 border-[3px] border-surface-container rounded-lg">
+      <h3 class="mb-2 text-xl font-semibold tracking-tight inline-flex items-center gap-2">
+        <app-star-icon className="w-5 h-5 text-primary"/>
+        {{ translations.aboutUs.sections[4].items?.[0]?.title }}
+      </h3>
+      <div class="flex flex-wrap gap-2">
+        <span class="bg-surface-container text-gray-800 text-sm font-medium px-3 py-0.5 rounded-full dark:text-gray-300">
+          {{ translations.aboutUs.sections[4].items?.[0]?.content[0] }}
+        </span>
+        <span class="bg-surface-container text-gray-800 text-sm font-medium px-3 py-0.5 rounded-full dark:text-gray-300">
+          {{ translations.aboutUs.sections[4].items?.[0]?.content[1] }}
+        </span>
+        <span class="bg-surface-container text-gray-800 text-sm font-medium px-3 py-0.5 rounded-full dark:text-gray-300">
+          {{ translations.aboutUs.sections[4].items?.[0]?.content[2] }}
+        </span>
+        <span class="bg-surface-container text-gray-800 text-sm font-medium px-3 py-0.5 rounded-full dark:text-gray-300">
+          {{ translations.aboutUs.sections[4].items?.[0]?.content[3] }}
+        </span>
+        <span class="bg-surface-container text-gray-800 text-sm font-medium px-3 py-0.5 rounded-full dark:text-gray-300">
+          {{ translations.aboutUs.sections[4].items?.[0]?.content[4] }}
+        </span>
+        <span class="bg-surface-container text-gray-800 text-sm font-medium px-3 py-0.5 rounded-full dark:text-gray-300">
+          {{ translations.aboutUs.sections[4].items?.[0]?.content[5] }}
+        </span>
+        <span class="bg-surface-container text-gray-800 text-sm font-medium px-3 py-0.5 rounded-full dark:text-gray-300">
+          {{ translations.aboutUs.sections[4].items?.[0]?.content[6] }}
+        </span>
+        <span class="bg-surface-container text-gray-800 text-sm font-medium px-3 py-0.5 rounded-full dark:text-gray-300">
+          {{ translations.aboutUs.sections[4].items?.[0]?.content[7] }}
+        </span>
+      </div>
+    </div>
+    <div class="col-span-6 sm:col-span-4 xl:col-span-2 block p-6 border-[3px] border-surface-container rounded-lg">
+      <h3 class="mb-2 text-xl font-semibold tracking-tight inline-flex items-center gap-2">
+        <app-device-laptop-icon className="w-6 h-6 text-primary"/>
+        {{ translations.aboutUs.sections[4].items?.[1]?.title }}
+      </h3>
+      <div class="flex flex-wrap gap-2">
+        <span class="bg-surface-container text-gray-800 text-sm font-medium px-3 py-0.5 rounded-full dark:text-gray-300">
+          {{ translations.aboutUs.sections[4].items?.[1]?.content[0] }}
+        </span>
+        <span class="bg-surface-container text-gray-800 text-sm font-medium px-3 py-0.5 rounded-full dark:text-gray-300">
+          {{ translations.aboutUs.sections[4].items?.[1]?.content[1] }}
+        </span>
+        <span class="bg-surface-container text-gray-800 text-sm font-medium px-3 py-0.5 rounded-full dark:text-gray-300">
+          {{ translations.aboutUs.sections[4].items?.[1]?.content[2] }}
+        </span>
+        <span class="bg-surface-container text-gray-800 text-sm font-medium px-3 py-0.5 rounded-full dark:text-gray-300">
+          {{ translations.aboutUs.sections[4].items?.[1]?.content[3] }}
+        </span>
+        <span class="bg-surface-container text-gray-800 text-sm font-medium px-3 py-0.5 rounded-full dark:text-gray-300">
+          {{ translations.aboutUs.sections[4].items?.[1]?.content[4] }}
+        </span>
+        <span class="bg-surface-container text-gray-800 text-sm font-medium px-3 py-0.5 rounded-full dark:text-gray-300">
+          {{ translations.aboutUs.sections[4].items?.[1]?.content[5] }}
+        </span>
+        <span class="bg-surface-container text-gray-800 text-sm font-medium px-3 py-0.5 rounded-full dark:text-gray-300">
+          {{ translations.aboutUs.sections[4].items?.[1]?.content[6] }}
+        </span>
+      </div>
+    </div>
+    <div class="col-span-6 sm:col-span-2 xl:col-span-1 block p-6 border-[3px] border-surface-container rounded-lg">
+      <h3 class="mb-2 text-xl font-semibold tracking-tight inline-flex items-center gap-2">
+        <app-world-icon className="w-5 h-5 text-primary"/>
+        {{ translations.aboutUs.sections[4].items?.[2]?.title }}
+      </h3>
+      <div class="flex flex-wrap gap-2">
+        <span class="bg-surface-container text-gray-800 text-sm font-medium px-3 py-0.5 rounded-full dark:text-gray-300">
+          {{ translations.aboutUs.sections[4].items?.[2]?.content[0] }}
+        </span>
+        <span class="bg-surface-container text-gray-800 text-sm font-medium px-3 py-0.5 rounded-full dark:text-gray-300">
+          {{ translations.aboutUs.sections[4].items?.[2]?.content[1] }}
+        </span>
+      </div>
+    </div>
+  </div>
+</section>

@@ -32,9 +32,9 @@ export interface Translations {
     title: string;
     sections: {
       title: string;
-      content?: string;
+      content?: any;
       platforms?: string[];
-      items?: { title: string; content: string | string[] }[];
+      items?: { title: string; content: any }[];
     }[];
   };
   footer: {
