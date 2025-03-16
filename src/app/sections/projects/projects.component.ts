@@ -5,10 +5,12 @@ import { ApiProject } from '../../models/api-project';
 import { CardComponent } from "../../components/card/card.component";
 import { ProjectDataService } from '../../services/api/project-data.service';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { FailedToLoadIconComponent } from "../../icons/failed-to-load-icon/failed-to-load-icon.component";
+import { ThemeService } from '../../services/theme/theme.service';
 
 @Component({
   selector: 'app-projects',
-  imports: [CardComponent],
+  imports: [CardComponent, FailedToLoadIconComponent],
   animations:[
     trigger('fadeInT', [
       transition(':enter', [
@@ -38,9 +40,11 @@ export class ProjectsComponent{
   //private apiService = inject(ApiService);
   //public projectsResponse = this.apiService.projectsResponse;
   private languageService = inject(LanguageService);
+  private themeService = inject(ThemeService);
   private projectDataService = inject(ProjectDataService);
 
   public translations = this.languageService.translations;
+  public darkTheme = this.themeService.isDarkTheme;
   public language = this.languageService.currentLanguage;
   
   loading = this.projectDataService.loading;
@@ -90,7 +94,7 @@ export class ProjectsComponent{
   private updateLayout(): void {
     const width = window.innerWidth;
     this.columns.set(width >= 1536 ? 3 : width >= 768 ? 2 : 1);
-    this.skeletonCount.set(width >= 1536 ? 3 : 2);
+    this.skeletonCount.set(width >= 1536 ? 3 : width >= 768 ? 2 : 1);
   }
 
   public mapProject(apiProject: ApiProject): Project {

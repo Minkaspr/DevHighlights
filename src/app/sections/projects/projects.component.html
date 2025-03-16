@@ -1,8 +1,8 @@
 <section [id]="sectionId">
-  <div class="my-6 flex flex-col items-center">
+  <div class="my-8 flex flex-col items-center ">
     <h2 class="text-3xl font-bold text-center">{{ translations().projects.title }}</h2>
     @if (loading()) {
-      <div @fadeOut class="mt-8 flex flex-col md:flex-row justify-center items-center gap-6 w-full">
+      <div  class="mt-8 flex flex-col md:flex-row justify-center items-center gap-6 w-full">
         @for (i of skeletons(); track i) {
           <div role="status" class="flex-1 max-w-lg w-full p-6 border border-gray-200 rounded-lg shadow-sm animate-pulse md:p-6 dark:border-gray-700">
             <div class="flex items-center justify-center aspect-video mb-4 bg-gray-300 rounded-lg dark:bg-gray-700">
@@ -21,7 +21,7 @@
                 <span class="inline-flex items-center justify-center size-9 rounded-full border-2 border-gray-200 dark:border-gray-700"></span>
               </div>
               <div>
-                  <div class="w-24 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
+                <div class="w-24 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
               </div>
             </div>
             <span class="sr-only">Loading...</span>
@@ -29,27 +29,36 @@
         }
       </div>
     } @else {
-      @if (displayedProjects().length > 0) {
-        <div @fadeIn class="py-8 grid gap-6 grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 auto-rows-fr">
-          @for (project of displayedProjects(); track project.id) {
-            <div @fadeInT>
-              <app-card [project]="mapProject(project)"/>
-            </div>
+      <div class="fade-in">
+        @if (displayedProjects().length > 0) {
+          <div class="py-8 grid gap-6 grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 auto-rows-fr">
+            @for (project of displayedProjects(); track project.id) {
+              <div @fadeInT>
+                <app-card [project]="mapProject(project)"/>
+              </div>
+            }
+          </div>
+          @if (displayedProjects().length < (allProjects().length || 0)) {
+            <button 
+            (click)="loadMore()" 
+            class="cursor-pointer bg-transparent hover:bg-surface-container-low  inline-flex 
+            text-gray-800 dark:text-gray-100 font-regular py-2 px-4 border border-gray-400 rounded-lg shadow">
+              {{ translations().projects.loadMore }}
+            </button>
           }
-        </div>
-        @if (displayedProjects().length < (allProjects().length || 0)) {
-          <button 
-          (click)="loadMore()" 
-          class="cursor-pointer bg-transparent hover:bg-surface-container-low  inline-flex 
-          text-gray-800 dark:text-gray-100 font-regular py-2 px-4 border border-gray-400 rounded-lg shadow">
-            {{ translations().projects.loadMore }}
-          </button>
+        } @else if (errorMessage() && !loading() && displayedProjects().length === 0) {
+          <div class="h-[460px] flex flex-col mt-8 g-4 py-2">
+            <app-failed-to-load-icon 
+              className="max-h-80 p-7"
+              [fillPrimary]="darkTheme() ? '#8ac1dd' : '#156683'"
+              [fillOnPrimaryContainer]="darkTheme() ? '#417386' : '#023042'"
+              [fillSurfaceBright]="darkTheme() ? '#D6DADE' : '#AFC9E3'"/>
+            <p class="text-center">
+              {{ errorMessage() }}
+            </p>
+          </div>
         }
-      } @else if (errorMessage() && !loading() && displayedProjects().length === 0) {
-        <p class="text-center mt-4">
-          {{ errorMessage() }}
-        </p>
-      }
+      </div>
     }
   </div>
 </section>
