@@ -94,6 +94,12 @@ export class HeaderComponent implements AfterViewChecked, OnChanges{
     }
   }
 
+  onKeydown(event: KeyboardEvent, section: string) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      this.onSectionSelect(section);
+    }
+  }
+
   public updateActiveSection(sectionId: string): void {
     this.activeSection = sectionId;
   }

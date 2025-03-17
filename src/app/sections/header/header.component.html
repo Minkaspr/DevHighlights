@@ -16,6 +16,7 @@
         <ul class="select-none flex flex-col md:flex-row justify-center items-center gap-8 h-lvh md:h-auto ">
           <li>
             <a #navLink 
+              role="link" tabindex="0" (keydown)="onKeydown($event, 'hero')"
               (click)="onSectionSelect('hero')" 
               class="nav-link cursor-pointer" 
               [class.active]="activeSection === 'hero'">
@@ -24,6 +25,7 @@
           </li>
           <li>
             <a #navLink 
+              role="link" tabindex="0" (keydown)="onKeydown($event, 'projects')"
               (click)="onSectionSelect('projects')" 
               class="nav-link cursor-pointer"
               [class.active]="activeSection === 'projects'">
@@ -32,6 +34,7 @@
           </li>
           <li>
             <a #navLink 
+              role="link" tabindex="0" (keydown)="onKeydown($event, 'about')"
               (click)="onSectionSelect('about')" 
               class="nav-link cursor-pointer"
               [class.active]="activeSection === 'about'">
