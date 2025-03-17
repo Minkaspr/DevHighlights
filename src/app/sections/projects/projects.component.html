@@ -51,7 +51,7 @@
         } @else if (errorMessage() && !loading() && displayedProjects().length === 0) {
           <div class="h-[460px] flex flex-col mt-8 g-4 py-2">
             <app-failed-to-load-icon 
-              className="max-h-80 p-7"
+              className="max-h-80 p-7 w-full"
               [fillPrimary]="darkTheme() ? '#8ac1dd' : '#156683'"
               [fillOnPrimaryContainer]="darkTheme() ? '#417386' : '#023042'"
               [fillSurfaceBright]="darkTheme() ? '#D6DADE' : '#AFC9E3'"/>
