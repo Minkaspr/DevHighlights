@@ -31,21 +31,23 @@
     } @else {
       <div class="fade-in">
         @if (displayedProjects().length > 0) {
-          <div class="py-8 grid gap-6 grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 auto-rows-fr">
-            @for (project of displayedProjects(); track project.id) {
-              <div @fadeInT>
-                <app-card [project]="mapProject(project)"/>
-              </div>
+          <div class="flex flex-col gap-8 items-center py-8">
+            <div class="grid gap-6 grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 auto-rows-fr">
+              @for (project of displayedProjects(); track project.id) {
+                <div @fadeInT>
+                  <app-card [project]="mapProject(project)"/>
+                </div>
+              }
+            </div>
+            @if (displayedProjects().length < (allProjects().length || 0)) {
+              <button 
+              (click)="loadMore()" 
+              class="cursor-pointer bg-transparent hover:bg-surface-container-low
+              text-gray-800 dark:text-gray-100 font-regular py-2 px-4 border border-gray-400 rounded-lg shadow">
+                {{ translations().projects.loadMore }}
+              </button>
             }
           </div>
-          @if (displayedProjects().length < (allProjects().length || 0)) {
-            <button 
-            (click)="loadMore()" 
-            class="cursor-pointer bg-transparent hover:bg-surface-container-low  inline-flex 
-            text-gray-800 dark:text-gray-100 font-regular py-2 px-4 border border-gray-400 rounded-lg shadow">
-              {{ translations().projects.loadMore }}
-            </button>
-          }
         } @else if (errorMessage() && !loading() && displayedProjects().length === 0) {
           <div class="h-[460px] flex flex-col mt-8 g-4 py-2">
             <app-failed-to-load-icon 

@@ -40,7 +40,7 @@ export class AppComponent implements OnInit{
     if (currentSectionId && currentSectionId !== this.activeSection) {
       this.activeSection = currentSectionId;
       this.updateHash(currentSectionId);
-      this.notifyHeader(currentSectionId);
+      //this.notifyHeader(currentSectionId);
     }
   }
 

@@ -1,4 +1,4 @@
-import { AfterViewChecked, AfterViewInit, Component, computed, ElementRef, EventEmitter, inject, Input, Output, QueryList, ViewChildren } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, computed, ElementRef, EventEmitter, inject, Input, OnChanges, Output, QueryList, SimpleChanges, ViewChildren } from '@angular/core';
 import { LanguageService } from '../../services/languague/language.service';
 import { ThemeService } from '../../services/theme/theme.service';
 import { SunIconComponent } from "../../icons/sun-icon/sun-icon.component";
@@ -23,7 +23,7 @@ import { DropdownComponent } from "../../components/dropdown/dropdown.component"
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent implements AfterViewChecked{
+export class HeaderComponent implements AfterViewChecked, OnChanges{
 
   private languageService = inject(LanguageService);
   private themeService = inject(ThemeService);
@@ -45,6 +45,7 @@ export class HeaderComponent implements AfterViewChecked{
   ]);
 
   private links: HTMLElement[] = [];
+  private sections = ['hero', 'projects', 'about'];
 
   ngAfterViewChecked(): void {
     if (this.navLinks && this.navLinks.length > 0 && this.links.length === 0) {
@@ -58,6 +59,12 @@ export class HeaderComponent implements AfterViewChecked{
     }
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['activeSection']) {
+      this.updateHoverClasses();
+    }
+  }
+
   private handleHover(hoverIndex: number): void {
     const activeIndex = this.links.findIndex(link => link.classList.contains('active'));
     
@@ -68,9 +75,14 @@ export class HeaderComponent implements AfterViewChecked{
     const movingRight = hoverIndex > activeIndex;
     //console.log(`Moviendo hacia la ${movingRight ? 'derecha' : 'izquierda'}`);
 
-    this.links[hoverIndex].classList.remove('hover-left', 'hover-right');
-    void this.links[hoverIndex].offsetWidth; 
+    // Actualizamos la clase del enlace que era activo
+    this.links[activeIndex].classList.remove('hover-left', 'hover-right');
+    void this.links[activeIndex].offsetWidth; // Forzar reflow para reiniciar la animación
+    this.links[activeIndex].classList.add(movingRight ? 'hover-left' : 'hover-right');
 
+    // Aplicamos el hover al nuevo elemento
+    this.links[hoverIndex].classList.remove('hover-left', 'hover-right');
+    void this.links[hoverIndex].offsetWidth;
     this.links[hoverIndex].classList.add(movingRight ? 'hover-right' : 'hover-left');
   }
   
@@ -84,6 +96,12 @@ export class HeaderComponent implements AfterViewChecked{
 
   public updateActiveSection(sectionId: string): void {
     this.activeSection = sectionId;
+  }
+
+  private updateHoverClasses(): void {
+    const activeIndex = this.sections.indexOf(this.activeSection); // Encontrar índice del activo
+    if (activeIndex === -1) return; // Si no hay un activo válido, salir
+    this.handleHover(activeIndex);
   }
 
   public toggleTheme(): void {
