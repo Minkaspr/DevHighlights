@@ -65,10 +65,7 @@ export class AppComponent implements OnInit{
   }
 
   updateHash(sectionId: string): void {
-    if (sectionId === 'hero') {
-      window.history.pushState(null, '', window.location.pathname);
-    } else {
-      window.history.pushState(null, '', `#${sectionId}`);
-    }
+    const newUrl = sectionId === 'hero' ? '/' : `/${sectionId}`;
+    window.history.pushState(null, '', newUrl);
   }
 }
